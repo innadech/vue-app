@@ -1,5 +1,10 @@
 <script>
+import FruitSubmitter from './components/FruitSubmitter.vue'
+import TitleText from './components/TitleText.vue'
+
 export default {
+  components: { FruitSubmitter, TitleText },
+
   data() {
     return {
       fruits: [],
@@ -11,7 +16,12 @@ export default {
 
 <template>
   <div class="container">
-    <h1>Список фрукты</h1>
+    <TitleText inna-text="Список фруктов" />
+
+    <TitleText v-bind:inna-text="fruit" />
+
+    <!-- <FruitSubmitter /> -->
+
     <div>
       <input
         type="text"
@@ -20,10 +30,12 @@ export default {
         placeholder="Введите задачу"
       />
       <button v-on:click="fruits.push(fruit)">Добавить фрукт</button>
-      <p>{{ fruits.length }}</p>
     </div>
+
+    <p>{{ fruits.length }}</p>
+
     <ul>
-      <li v-for="(fruit, idx) of fruits" :key="idx" class="completed">
+      <li v-for="(fruit, idx) of fruits" v-bind:key="idx" class="completed">
         <span v-on:click="fruits[idx] = fruits[idx] + '!'" class="task-text">
           {{ fruit }}
         </span>
