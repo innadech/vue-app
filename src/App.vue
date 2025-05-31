@@ -47,6 +47,7 @@ export default {
   width: 100%;
   max-width: 400px;
   text-align: center;
+  margin: 0 auto;
 }
 h1 {
   margin-bottom: 20px;
