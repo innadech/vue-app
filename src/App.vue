@@ -1,9 +1,11 @@
 <script>
 import FruitSubmitter from './components/FruitSubmitter.vue'
 import TitleText from './components/TitleText.vue'
+import FruitList from './components/FruitList.vue'
+import FruitCount from './components/FruitCount.vue'
 
 export default {
-  components: { FruitSubmitter, TitleText },
+  components: { FruitSubmitter, TitleText, FruitList, FruitCount },
 
   data() {
     return {
@@ -20,6 +22,10 @@ export default {
 
     <TitleText v-bind:inna-text="fruit" />
 
+    <FruitCount v-bind:fruit-count="fruits.length" />
+
+    <FruitList v-bind:fruit-content="fruits" />
+
     <!-- <FruitSubmitter /> -->
 
     <div>
@@ -31,22 +37,6 @@ export default {
       />
       <button v-on:click="fruits.push(fruit)">Добавить фрукт</button>
     </div>
-
-    <p>{{ fruits.length }}</p>
-
-    <ul>
-      <li v-for="(fruit, idx) of fruits" v-bind:key="idx" class="completed">
-        <span v-on:click="fruits[idx] = fruits[idx] + '!'" class="task-text">
-          {{ fruit }}
-        </span>
-        <button
-          v-on:click="fruits = fruits.filter(f => f !== fruit)"
-          class="deleteButton"
-        >
-          Удалить
-        </button>
-      </li>
-    </ul>
   </div>
 </template>
 
