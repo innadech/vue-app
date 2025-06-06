@@ -7,11 +7,14 @@ export default {
 <template>
   <ul>
     <li v-for="(fruit, idx) in fruitContent" v-bind:key="idx" class="completed">
-      <span v-on:click="fruits[idx] = fruits[idx] + '!'" class="task-text">
+      <span
+        v-on:click="fruitContent[idx] = fruitContent[idx] + '!'"
+        class="task-text"
+      >
         {{ fruit }}
       </span>
       <button
-        v-on:click="fruits = fruits.filter(f => f !== fruit)"
+        v-on:click="fruitContent.splice(fruitContent.indexOf(fruit), 1)"
         class="deleteButton"
       >
         Удалить

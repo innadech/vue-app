@@ -18,7 +18,7 @@ export default {
 
 <template>
   <div class="container">
-    <TitleText inna-text="Список фруктов" />
+    <TitleText inna-text="Список фруктов" @my-event="console.log($event)" />
 
     <TitleText v-bind:inna-text="fruit" />
 
