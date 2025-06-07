@@ -26,9 +26,10 @@ export default {
 
     <FruitList v-bind:fruit-content="fruits" />
 
-    <!-- <FruitSubmitter /> -->
+    <FruitSubmitter v-bind:fruit-content="fruits" @my-event="fruit = $event" />
+    {{ fruit }}
 
-    <div>
+    <!-- <div>
       <input
         type="text"
         v-bind:value="fruit"
@@ -36,7 +37,7 @@ export default {
         placeholder="Введите задачу"
       />
       <button v-on:click="fruits.push(fruit)">Добавить фрукт</button>
-    </div>
+    </div> -->
   </div>
 </template>
 

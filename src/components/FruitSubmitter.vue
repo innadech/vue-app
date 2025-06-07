@@ -1,5 +1,9 @@
 <script>
-export default {}
+export default {
+  props: ['fruitContent'],
+
+  emits: ['my-event'],
+}
 </script>
 
 <template>
@@ -7,9 +11,9 @@ export default {}
     <input
       type="text"
       v-bind:value="fruit"
-      v-on:input="fruit = $event.target.value"
+      @input="$emit('my-event', $event.target.value)"
       placeholder="Введите задачу"
     />
-    <button v-on:click="fruits.push(fruit)">Добавить фрукт</button>
+    <button v-on:click="fruitContent.push(fruit)">Добавить фрукт</button>
   </div>
 </template>
