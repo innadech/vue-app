@@ -3,6 +3,12 @@ export default {
   props: ['fruitContent'],
 
   emits: ['my-event'],
+
+  data() {
+    return {
+      fruit: '',
+    }
+  },
 }
 </script>
 
@@ -10,10 +16,10 @@ export default {
   <div>
     <input
       type="text"
-      v-bind:value="fruit"
-      @input="$emit('my-event', $event.target.value)"
+      :value="fruit"
+      @input="fruit = $event.target.value"
       placeholder="Введите задачу"
     />
-    <button v-on:click="fruitContent.push(fruit)">Добавить фрукт</button>
+    <button v-on:click="$emit('my-event', fruit)">Добавить фрукт</button>
   </div>
 </template>

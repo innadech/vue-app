@@ -10,7 +10,6 @@ export default {
   data() {
     return {
       fruits: [],
-      fruit: '',
     }
   },
 }
@@ -20,14 +19,14 @@ export default {
   <div class="container">
     <TitleText inna-text="Список фруктов" @my-event="console.log($event)" />
 
-    <TitleText v-bind:inna-text="fruit" />
-
     <FruitCount v-bind:fruit-count="fruits.length" />
 
     <FruitList v-bind:fruit-content="fruits" />
 
-    <FruitSubmitter v-bind:fruit-content="fruits" @my-event="fruit = $event" />
-    {{ fruit }}
+    <FruitSubmitter
+      v-bind:fruit-content="fruits"
+      @my-event="fruits.push($event)"
+    />
 
     <!-- <div>
       <input
