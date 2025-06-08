@@ -1,6 +1,7 @@
 <script>
 export default {
   props: ['fruitContent'],
+  emits: ['my-event'],
 }
 </script>
 
@@ -14,7 +15,8 @@ export default {
         {{ fruit }}
       </span>
       <button
-        v-on:click="fruitContent.splice(fruitContent.indexOf(fruit), 1)"
+        v-on:click="$emit('my-event', fruit)""
+
         class="deleteButton"
       >
         Удалить
@@ -22,3 +24,7 @@ export default {
     </li>
   </ul>
 </template>
+
+<!-- v-on:click="fruitContent.splice(fruitContent.indexOf(fruit), 1)" -->
+  <!-- v-on:click="fruits = fruits.filter((_, i) => i !== idx)" -->
+  <!-- v-on:click="fruits = fruits.filter(f => f !== fruit)" -->

@@ -21,7 +21,10 @@ export default {
 
     <FruitCount v-bind:fruit-count="fruits.length" />
 
-    <FruitList v-bind:fruit-content="fruits" />
+    <FruitList
+      v-bind:fruit-content="fruits"
+      @my-event="fruits = fruits.filter(f => f !== $event)"
+    />
 
     <FruitSubmitter
       v-bind:fruit-content="fruits"
