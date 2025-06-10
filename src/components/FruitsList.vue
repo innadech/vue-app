@@ -1,15 +1,15 @@
 <script>
 export default {
-  props: ['fruitContent'],
+  props: ['fruits'],
   emits: ['my-event'],
 }
 </script>
 
 <template>
   <ul>
-    <li v-for="(fruit, idx) in fruitContent" v-bind:key="idx" class="completed">
+    <li v-for="(fruit, idx) in fruits" v-bind:key="idx" class="completed">
       <span
-        v-on:click="fruitContent[idx] = fruitContent[idx] + '!'"
+        v-on:click="fruits[idx] = fruits[idx] + '!'"
         class="task-text"
       >
         {{ fruit }}

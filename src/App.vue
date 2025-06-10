@@ -1,11 +1,11 @@
 <script>
 import FruitSubmitter from './components/FruitSubmitter.vue'
 import TitleText from './components/TitleText.vue'
-import FruitList from './components/FruitList.vue'
+import FruitsList from './components/FruitsList.vue'
 import FruitCount from './components/FruitCount.vue'
 
 export default {
-  components: { FruitSubmitter, TitleText, FruitList, FruitCount },
+  components: { FruitSubmitter, TitleText, FruitsList, FruitCount },
 
   data() {
     return {
@@ -21,15 +21,12 @@ export default {
 
     <FruitCount v-bind:fruit-count="fruits.length" />
 
-    <FruitList
-      v-bind:fruit-content="fruits"
+    <FruitsList
+      v-bind:fruits="fruits"
       @my-event="fruits = fruits.filter(f => f !== $event)"
     />
 
-    <FruitSubmitter
-      v-bind:fruit-content="fruits"
-      @my-event="fruits.push($event)"
-    />
+    <FruitSubmitter @my-event="fruits.push($event)" />
 
     <!-- <div>
       <input

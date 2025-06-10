@@ -1,7 +1,5 @@
 <script>
 export default {
-  props: ['fruitContent'],
-
   emits: ['my-event'],
 
   data() {
