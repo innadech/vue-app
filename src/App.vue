@@ -2,10 +2,10 @@
 import FruitSubmitter from './components/FruitSubmitter.vue'
 import TitleText from './components/TitleText.vue'
 import FruitsList from './components/FruitsList.vue'
-import FruitCount from './components/FruitCount.vue'
+import FruitsCount from './components/FruitsCount.vue'
 
 export default {
-  components: { FruitSubmitter, TitleText, FruitsList, FruitCount },
+  components: { FruitSubmitter, TitleText, FruitsList, FruitsCount },
 
   data() {
     return {
@@ -17,16 +17,16 @@ export default {
 
 <template>
   <div class="container">
-    <TitleText inna-text="Список фруктов" @my-event="console.log($event)" />
+    <TitleText caption="Список фруктов" v-on:click="fruits = []" />
 
-    <FruitCount v-bind:fruit-count="fruits.length" />
+    <FruitsCount v-bind:fruits-count="fruits.length" />
 
     <FruitsList
       v-bind:fruits="fruits"
-      @my-event="fruits = fruits.filter(f => f !== $event)"
+      v-on:my-event="fruits = fruits.filter(f => f !== $event)"
     />
 
-    <FruitSubmitter @my-event="fruits.push($event)" />
+    <FruitSubmitter v-on:my-event="fruits.push($event)" />
 
     <!-- <div>
       <input
