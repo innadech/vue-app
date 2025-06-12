@@ -5,5 +5,5 @@ export default {
 </script>
 
 <template>
-  <p>{{ fruitCount }}</p>
+  <p>{{ fruitsCount }}</p>
 </template>
