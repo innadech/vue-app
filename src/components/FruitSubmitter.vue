@@ -14,11 +14,11 @@ export default {
   <div>
     <input
       type="text"
-      :value="fruit"
-      @input="fruit = $event.target.value"
+      v-bind:value="fruit"
+      v-on:input="fruit = $event.target.value"
       placeholder="Введите задачу"
     />
-    <button v-on:click="$emit('my-event', fruit)fruit=''">
+    <button v-on:click="$emit('my-event', fruit), (fruit = '')">
       Добавить фрукт
     </button>
   </div>
