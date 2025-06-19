@@ -2,4 +2,4 @@ function $inna_() {
   console.log('foo')
 }
 
-$inna_()
+// console.log(typeof (123 + 'to')())

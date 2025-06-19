@@ -9,7 +9,7 @@ export default {
 
   data() {
     return {
-      fruits: [],
+      fruits: ['banana', 'cherry'],
     }
   },
 }
@@ -26,7 +26,7 @@ export default {
       v-on:my-event="fruits = fruits.filter(f => f !== $event)"
     />
 
-    <FruitSubmitter v-on:my-event="fruits.push($event)" />
+    <FruitSubmitter v-on:fruit-submitted="fruits.push($event)" />
 
     <!-- <div>
       <input

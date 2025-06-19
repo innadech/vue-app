@@ -1,11 +1,18 @@
 <script>
 export default {
-  emits: ['my-event'],
+  emits: ['fruit-submitted'],
 
   data() {
     return {
       fruit: '',
     }
+  },
+
+  methods: {
+    handleClickButton() {
+      this.$emit('fruit-submitted', this.fruit)
+      this.fruit = ''
+    },
   },
 }
 </script>
@@ -16,10 +23,8 @@ export default {
       type="text"
       v-bind:value="fruit"
       v-on:input="fruit = $event.target.value"
-      placeholder="Введите задачу"
+      placeholder="Введите фрукт"
     />
-    <button v-on:click="$emit('my-event', fruit), (fruit = '')">
-      Добавить фрукт
-    </button>
+    <button v-on:click="handleClickButton">Добавить фрукт</button>
   </div>
 </template>
