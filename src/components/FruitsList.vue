@@ -2,14 +2,17 @@
 export default {
   props: ['fruits'],
 
-  emits: ['my-event'],
+  emits: ['my-event', 'my-event-2'],
 }
 </script>
 
 <template>
   <ul>
-    <li v-for="(fruit, idx) in fruits" v-bind:key="idx" class="completed">
-      <span v-on:click="fruits[idx] = fruits[idx] + '!'" class="task-text">
+    <li v-for="(fruit, idx) of fruits" v-bind:key="idx" class="completed">
+      <span
+        v-on:click="$emit('my-event-2', { x: fruit, y: fruit + '!' })"
+        class="task-text"
+      >
         {{ fruit }}
       </span>
       <button v-on:click="$emit('my-event', fruit)" class="deleteButton">
