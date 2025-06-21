@@ -23,8 +23,8 @@ export default {
 
     <FruitsList
       v-bind:fruits="fruits"
-      v-on:my-event="fruits = fruits.filter(f => f !== $event)"
-      v-on:my-event-2="
+      v-on:removed-fruit="fruits = fruits.filter(f => f !== $event)"
+      v-on:edited-fruit="
         fruits = fruits.map(f => (f === $event.x ? $event.y : f))
       "
     />
