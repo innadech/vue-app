@@ -19,33 +19,18 @@ export default {
   <div class="container">
     <TitleText caption="Список фруктов" v-on:click="fruits = []" />
 
-    <FruitsCount v-bind:fruits-count="fruits.length" />
-
-    <FruitsList
-      v-bind:fruits="fruits"
-      v-on:removed-fruit="fruits = fruits.filter(f => f !== $event)"
-      v-on:edited-fruit="
-        fruits = fruits.map(f => (f === $event.x ? $event.y : f))
-      "
-    />
-
-    <!-- v-on:my-event-2="fruits.splice($event.x, 1, $event.y)" -->
-
     <FruitSubmitter v-on:fruit-submitted="fruits.push($event)" />
 
-    <!-- <div>
-      <input
-        type="text"
-        v-bind:value="fruit"
-        v-on:input="fruit = $event.target.value"
-        placeholder="Введите задачу"
-      />
-      <button v-on:click="fruits.push(fruit)">Добавить фрукт</button>
-    </div> -->
+    <FruitsCount v-bind:fruits-count="fruits.length" />
+
+    <FruitsList v-bind:fruits="fruits" v-on:fruits-updated="fruits = $event" />
   </div>
 </template>
 
 <style>
+html {
+  user-select: none;
+}
 .container {
   background: #fff;
   padding: 20px;

@@ -1,24 +1,39 @@
 <script>
+import FruitItem from './FruitItem.vue'
+
 export default {
+  components: { FruitItem },
+
   props: ['fruits'],
 
-  emits: ['removed-fruit', 'edited-fruit'],
+  emits: ['fruits-updated'],
+
+  methods: {
+    editFruit(newFruit, oldFruit) {
+      this.$emit(
+        'fruits-updated',
+        this.fruits.map(f => (f === oldFruit ? newFruit : f))
+      )
+    },
+    removeFruit(fruit) {
+      this.$emit(
+        'fruits-updated',
+        this.fruits.filter(f => f !== fruit)
+      )
+    },
+  },
 }
 </script>
 
 <template>
   <ul>
-    <li v-for="(fruit, idx) of fruits" v-bind:key="idx" class="completed">
-      <span
-        v-on:click="$emit('edited-fruit', { x: fruit, y: fruit + '!' })"
-        class="task-text"
-      >
-        {{ fruit }}
-      </span>
-      <button v-on:click="$emit('removed-fruit', fruit)" class="deleteButton">
-        Удалить
-      </button>
-    </li>
+    <FruitItem
+      v-for="(fruit, idx) of fruits"
+      v-bind:key="idx"
+      v-bind:fruit="fruit"
+      v-on:edited-fruit="editFruit($event, fruit)"
+      v-on:removed-fruit="removeFruit"
+    />
   </ul>
 </template>
 
