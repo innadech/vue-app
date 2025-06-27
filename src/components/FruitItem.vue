@@ -8,9 +8,11 @@ export default {
 
 <template>
   <li class="completed">
-    <span v-on:click="$emit('edited-fruit', fruit + '!')" class="task-text">
-      {{ fruit }}
-    </span>
+    <input
+      v-bind:value="fruit"
+      v-on:input="$emit('edited-fruit', $event.target.value)"
+    />
+
     <button v-on:click="$emit('removed-fruit', fruit)" class="deleteButton">
       Удалить
     </button>
